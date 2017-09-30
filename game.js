@@ -15,10 +15,10 @@ var winningScore = 100;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
-  createItem(305,350,'c-door');
-  items.create(305,410,'c-door');
-  items.create(760,260,'c-door');
-  items.create(245,60,'c-door');
+  //createItem(305,350,'c-door');
+  //items.create(305,410,'c-door');
+  //items.create(760,260,'c-door');
+  //items.create(245,60,'c-door');
   createItem(375, 400, 'coin');
   createItem(575, 500, 'coin');
   createItem(225, 500, 'coin');
@@ -27,9 +27,9 @@ function addItems() {
   createItem(525, 300, 'coin');
   createItem(650, 250, 'coin');
   createItem(225, 200, 'coin');
-//  createItem(375, 100, 'poison');
-//  createItem(370,500,'poison');
-//  createItem(100, 375, 'poison');
+  createItem(305, 410, 'star');
+  createItem(760,260,'star');
+  createItem(245, 60, 'star');
 //  createItem(125, 50, 'star');
 }
 
@@ -79,9 +79,9 @@ function itemHandler(player, item) {
   else if (item.key == 'poison'){
     currentScore = currentScore - 5;
   }
-  else if(item.key == 'c-door'){
+  else if(item.key == 'star'){
   	//alert("You must answer the following question to move ahead.\n Is 'Dhai' equal to 1.5?")
-  	alert("You have hit the wrong door. You must be put to test now. Answer correctly to move ahead");
+  	alert("You have hit the STAR. You must be put to test now. Answer correctly to move ahead");
 
   	var res = 'Yes';
 	var x = window.prompt(questionBank[index]);
@@ -139,7 +139,7 @@ window.onload = function () {
     game.load.spritesheet('coin', 'coin.png', 36, 44);
     game.load.spritesheet('badge', 'badge.png', 42, 54);
     game.load.spritesheet('poison', 'poison.png', 32, 32);
-    game.load.spritesheet('star', 'star.png', 32, 32);
+    game.load.spritesheet('star', 'star.png', 40, 40);
     game.load.spritesheet('c-door', 'c-door.png', 40, 40);
   }
 
