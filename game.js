@@ -15,10 +15,9 @@ var winningScore = 100;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
-  //createItem(305,350,'c-door');
-  //items.create(305,410,'c-door');
-  //items.create(760,260,'c-door');
-  //items.create(245,60,'c-door');
+  items.create(305,410,'star');
+  items.create(760,260,'star');
+  items.create(245,60,'star');
   createItem(375, 400, 'coin');
   createItem(575, 500, 'coin');
   createItem(225, 500, 'coin');
@@ -28,8 +27,8 @@ function addItems() {
   createItem(650, 250, 'coin');
   createItem(225, 200, 'coin');
   createItem(305, 410, 'star');
-  createItem(760,260,'star');
-  createItem(245, 60, 'star');
+  //createItem(760,260,'star');
+  //createItem(245, 60, 'star');
 //  createItem(125, 50, 'star');
 }
 
@@ -69,7 +68,7 @@ function createBadge() {
 function itemHandler(player, item) {
   item.kill();
   
-  var questionBank = ['Is daed same as 1.5?','Is 77/11+5-2 equal to 23-50/5?','Are you going to lose this game?','Do normal adults have 206 bones?','Feb 2018 would have 29 days?','The abbrievation WWW stands for Window of World Web','Is 27*13 greater than 14*26?'];
+  var questionBank = ['Is daed same as 1.5?','Is 77/11+5+1 equal to 23-50/5?','Are you going to lose this game?','Do normal adults have 206 bones?','Feb 2018 would have 29 days?','The abbrievation WWW stands for Window of World Web','Is 27*13 greater than 14*26?'];
   var index = Math.floor(Math.random()*questionBank.length);
  
 
@@ -81,7 +80,7 @@ function itemHandler(player, item) {
   }
   else if(item.key == 'star'){
   	//alert("You must answer the following question to move ahead.\n Is 'Dhai' equal to 1.5?")
-  	alert("You have hit the STAR. You must be put to test now. Answer correctly to move ahead");
+  	alert("You have hit the STAR. You must be put to test now. Answer yes or no correctly to move ahead");
 
   	var res = 'Yes';
 	var x = window.prompt(questionBank[index]);
@@ -100,7 +99,7 @@ function itemHandler(player, item) {
 	else {
 		res = 'No';
 	}
-	if (x == res){
+	if (x.toLowerCase() == res.toLowerCase()){
    	  window.alert("Good. That is the right answer. You get +10");
 	  currentScore = currentScore + 10;
 	}
@@ -135,12 +134,12 @@ window.onload = function () {
     game.load.image('platform2', 'platform_2.png');
     
     //Load spritesheets
-    game.load.spritesheet('player', 'cartoon3.png', 70, 70);
+    game.load.spritesheet('player', 'cartoon3.png', 65, 65);
     game.load.spritesheet('coin', 'coin.png', 36, 44);
     game.load.spritesheet('badge', 'badge.png', 42, 54);
     game.load.spritesheet('poison', 'poison.png', 32, 32);
     game.load.spritesheet('star', 'star.png', 32, 32);
-    game.load.spritesheet('c-door', 'c-door.png', 40, 40);
+    game.load.spritesheet('c-door', 'c-door.png', 47, 53);
   }
 
   
