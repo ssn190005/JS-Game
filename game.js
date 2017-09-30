@@ -15,6 +15,7 @@ var winningScore = 100;
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
+  createItem(305,350,'c-door');
   items.create(305,410,'c-door');
   items.create(760,260,'c-door');
   items.create(245,60,'c-door');
@@ -130,13 +131,8 @@ window.onload = function () {
   function preload() {
     game.stage.backgroundColor = '#5db1ad';
     //Load images
-    game.load.image('background', 'bg.png');
     game.load.image('platform', 'platform_1.png');
     game.load.image('platform2', 'platform_2.png');
-    //game.load.image('c-door', 'closed-gate.jpg');
-    //game.load.image('o-door', 'open-gate.jpg');
-
-    //game.stage.backgroundColor = background;
     
     //Load spritesheets
     game.load.spritesheet('player', 'cartoon3.png', 70, 70);
@@ -145,7 +141,6 @@ window.onload = function () {
     game.load.spritesheet('poison', 'poison.png', 32, 32);
     game.load.spritesheet('star', 'star.png', 32, 32);
     game.load.spritesheet('c-door', 'c-door.png', 40, 40);
-    game.load.spritesheet('o-door', 'open-gate.jpg', 36, 40);
   }
 
   
