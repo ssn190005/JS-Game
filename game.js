@@ -68,23 +68,10 @@ function createBadge() {
 function itemHandler(player, item) {
   item.kill();
   
-  var questionBank = ['Is Nile the longest river in the world?','Is 77/11+5-2 equal to 23-50/5?','Is Antartica the largest desert in the world?','Do normal adults have 206 bones?','Would Feb 2018 have 29 days?','Does the abbrievation WWW stand for Window of World Web','Is 27*13 greater than 14*26?'];
+  var questionBank = ['Is Nile the longest river in the world?','Is 77/11+5-2 equal to 20-50/5?','Is Antartica the largest desert in the world?','Do normal adults have 206 bones?','Would Feb 2018 have 29 days?','Does the abbrievation WWW stand for Window of World Web','Is 27*13 greater than 14*26?'];
   var index = Math.floor(Math.random()*questionBank.length);
- 
-
-  if (item.key == 'coin'){
-    currentScore = currentScore + 10;
-  }
-  else if (item.key == 'poison'){
-    currentScore = currentScore - 5;
-  }
-  else if(item.key == 'star'){
-  	//alert("You must answer the following question to move ahead.\n Is 'Dhai' equal to 1.5?")
-  	alert("You have hit the STAR. You must be put to test now. Answer yes or no correctly to move ahead");
-
-  	var res = 'Yes';
-	var x = window.prompt(questionBank[index]);
-	if(index == 0) {
+  var res = 'Yes';
+  if(index == 0) {
 		res = 'Yes';
 	}
 	else if (index == 1){
@@ -99,12 +86,24 @@ function itemHandler(player, item) {
 	else {
 		res = 'No';
 	}
+
+  if (item.key == 'coin'){
+    currentScore = currentScore + 10;
+  }
+  else if (item.key == 'poison'){
+    currentScore = currentScore - 5;
+  }
+  else if(item.key == 'star'){
+  	alert("You have hit the STAR. You must be put to test now. Answer yes or no correctly to move ahead");
+
+	var x = window.prompt(questionBank[index]);
+	
 	if (x.toLowerCase() == res.toLowerCase()){
    	  window.alert("Good. That is the right answer. You get +10");
 	  currentScore = currentScore + 10;
 	}
 	else {
-   	  window.alert("Kal choyn. Game up!");
+   	  window.alert("Wrong answer. Game up!");
    	  lose = true;
    	  player.kill();
    	  losingMessage.text = "   You Lose!!!" + "\n" + "You scored" + " " + currentScore;
