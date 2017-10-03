@@ -68,7 +68,7 @@ function createBadge() {
 function itemHandler(player, item) {
   item.kill();
   
-  var questionBank = ['Is daed same as 1.5?','Is 77/11+5+1 equal to 23-50/5?','Are you going to lose this game?','Do normal adults have 206 bones?','Feb 2018 would have 29 days?','The abbrievation WWW stands for Window of World Web','Is 27*13 greater than 14*26?'];
+  var questionBank = ['Is Nile the longest river in the world?','Is 77/11+5-2 equal to 23-50/5?','Is Antartica the largest desert in the world?','Do normal adults have 206 bones?','Would Feb 2018 have 29 days?','Does the abbrievation WWW stand for Window of World Web','Is 27*13 greater than 14*26?'];
   var index = Math.floor(Math.random()*questionBank.length);
  
 
@@ -107,7 +107,11 @@ function itemHandler(player, item) {
    	  window.alert("Kal choyn. Game up!");
    	  lose = true;
    	  player.kill();
-   	  losingMessage.text = "You Lose!!!"
+   	  losingMessage.text = "   You Lose!!!" + "\n" + "You scored" + " " + currentScore;
+   	  					
+   	  setTimeout(function(){
+		window.location.href = "thanks.html";
+		},2000);
 	}
   }
  
@@ -161,7 +165,7 @@ window.onload = function () {
     text = game.add.text(16, 16, "SCORE: " + currentScore, { font: "bold 24px Arial", fill: "white" });
     winningMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "white" });
     winningMessage.anchor.setTo(0.5, 1);
-    losingMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "white" });
+    losingMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "red" });
     losingMessage.anchor.setTo(0.5, 1);
   }
 
@@ -196,6 +200,9 @@ window.onload = function () {
     // when the player winw the game
     if (won) {
       winningMessage.text = "YOU WIN!!!";
+      setTimeout(function(){
+		window.location.href = "thanks.html";
+		},5000);
     }
 
   }
