@@ -27,9 +27,6 @@ function addItems() {
   createItem(650, 250, 'coin');
   createItem(225, 200, 'coin');
   createItem(305, 410, 'star');
-  //createItem(760,260,'star');
-  //createItem(245, 60, 'star');
-//  createItem(125, 50, 'star');
 }
 
 // add platforms to the game
@@ -142,9 +139,9 @@ window.onload = function () {
     game.load.spritesheet('player', 'cartoon3.png', 65, 65);
     game.load.spritesheet('coin', 'coin.png', 36, 44);
     game.load.spritesheet('badge', 'badge.png', 42, 54);
-    game.load.spritesheet('poison', 'poison.png', 32, 32);
+    //game.load.spritesheet('poison', 'poison.png', 32, 32);
     game.load.spritesheet('star', 'star.png', 32, 32);
-    game.load.spritesheet('c-door', 'c-door.png', 47, 53);
+    //game.load.spritesheet('c-door', 'c-door.png', 47, 53);
   }
 
   
@@ -156,11 +153,11 @@ window.onload = function () {
     game.physics.arcade.enable(player);
     player.body.collideWorldBounds = true;
     player.body.gravity.y = 500;
+    player.inputEnabled = true;
 
     addItems();
     addPlatforms();
 
-    
     cursors = game.input.keyboard.createCursorKeys();
     jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     text = game.add.text(16, 16, "SCORE: " + currentScore, { font: "bold 24px Arial", fill: "white" });
