@@ -12,6 +12,7 @@ var won = false;
 var currentScore = 0;
 var winningScore = 100;
 
+
 // add collectable items to the game
 function addItems() {
   items = game.add.physicsGroup();
@@ -26,7 +27,6 @@ function addItems() {
   createItem(525, 300, 'coin');
   createItem(650, 250, 'coin');
   createItem(225, 200, 'coin');
-  createItem(305, 410, 'star');
 }
 
 // add platforms to the game
@@ -65,7 +65,20 @@ function createBadge() {
 function itemHandler(player, item) {
   item.kill();
   
-  var questionBank = ['Is Nile the longest river in the world?','Is 77/11+5-2 equal to 20-50/5?','Is Antartica the largest coldest desert in the world?','Do normal adults have 206 bones?','Would Feb 2018 have 29 days?','Does the abbrievation WWW stand for Window of World Web','Is 27*13 greater than 14*26?'];
+  var questionBank = ['Is Nile the longest river in the world?',//0
+  'Is 77/11+5-2 equal to 20-50/5?',//1
+  'Is Antartica the largest coldest desert in the world?',//2
+  'Do normal adults have 206 bones?',//3
+  'Is Mount Everest the tallest peak of the world?',//4
+  'Are there 50 states in the USA?',//5
+  'Is Gandhinagar the capital of Gujarat?',//6
+  'Would Feb 2018 have 29 days?',//7
+  'Do bats lay eggs?',//8
+  'Does the abbrievation WWW stand for Window of World Web',//9
+  'Is 27*13 greater than 14*26?',//10
+  'Is New York City the Capital of USA?',//11
+  'Is Yen the currency of China?'//12
+  ];
   var index = Math.floor(Math.random()*questionBank.length);
   var res = 'Yes';
   if(index == 0) {
@@ -79,6 +92,15 @@ function itemHandler(player, item) {
   }
   else if (index == 3){
 	res = 'Yes';
+  }
+  else if (index == 4){
+  	res = 'Yes'
+  }
+  else if (index == 5){
+	res = 'Yes';
+  }
+  else if (index == 6){
+  	res = 'Yes'
   }
   else {
 	res = 'No';
@@ -131,9 +153,11 @@ window.onload = function () {
   // before the game begins
   function preload() {
     game.stage.backgroundColor = '#5db1ad';
-    //Load images
+    //Load image
     game.load.image('platform', 'platform_1.png');
     game.load.image('platform2', 'platform_2.png');
+
+    //game.stage.backgroundColor = background;
     
     //Load spritesheets
     game.load.spritesheet('player', 'cartoon3.png', 65, 65);
@@ -141,8 +165,8 @@ window.onload = function () {
     game.load.spritesheet('badge', 'badge.png', 42, 54);
     //game.load.spritesheet('poison', 'poison.png', 32, 32);
     game.load.spritesheet('star', 'star.png', 32, 32);
-    //game.load.spritesheet('c-door', 'c-door.png', 47, 53);
-  }
+    //game.load.spritesheet('c-door', 'c-door.png', 40, 40);
+    }
 
   
   // initial game set up
@@ -154,6 +178,7 @@ window.onload = function () {
     player.body.collideWorldBounds = true;
     player.body.gravity.y = 500;
     player.inputEnabled = true;
+    //ayer.touch = true;
 
     addItems();
     addPlatforms();
@@ -165,6 +190,7 @@ window.onload = function () {
     winningMessage.anchor.setTo(0.5, 1);
     losingMessage = game.add.text(game.world.centerX, 275, "", { font: "bold 48px Arial", fill: "red" });
     losingMessage.anchor.setTo(0.5, 1);
+    
   }
 
   // while the game is running
