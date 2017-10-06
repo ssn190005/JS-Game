@@ -155,7 +155,7 @@ window.onload = function () {
     game.stage.backgroundColor = '#5db1ad';
     //Load image
     game.load.image('platform', 'platform_1.png');
-    #game.load.image('platform2', 'platform_2.png');
+    //game.load.image('platform2', 'platform_2.png');
 
     //game.stage.backgroundColor = background;
     
