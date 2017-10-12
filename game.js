@@ -141,7 +141,15 @@ function itemHandler(player, item) {
 // when the player collects the badge at the end of the game
 function badgeHandler(player, badge) {
   badge.kill();
-  won = true;
+  swal(
+        'Congratulations!!!',
+        'You have won this level.',
+        'success'
+        );
+      setTimeout(function(){
+        window.location.href = "level2.html";
+      },2000);
+  //won = true;
 }
 
 // setup game when the web page loads
@@ -220,17 +228,17 @@ window.onload = function () {
       player.body.velocity.y = -400;
     }
     // when the player wins the game
-    if (won) {
-      //winningMessage.text = "YOU WIN!!!";
-      swal(
-        'Congratulations!!!',
-        'You have won this level.',
-        'success'
-        );
-      setTimeout(function(){
-        window.location.href = "level2.html";
-      },3000);
-    }
+//     if (won) {
+//       //winningMessage.text = "YOU WIN!!!";
+//       swal(
+//         'Congratulations!!!',
+//         'You have won this level.',
+//         'success'
+//         );
+//       setTimeout(function(){
+//         window.location.href = "level2.html";
+//       },3000);
+//     }
 
   }
 
