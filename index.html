@@ -1,29 +1,127 @@
 <!doctype html>
 <html>
-  <title>Treasure Hunt!</title>
     <head>
         <meta charset="UTF-8" />
+
 <style>
-html {background-color: skyblue;
-      }
+#center-button {display:flex; justify-content: center;}
+
+#right-button {display:flex; justify-content: right;}
+
+@font-face {
+    font-family: 'JungleFeverRegular';
+    src: url('JungleFever-webfont.eot');
+    src: local('☺'), url('JungleFever-webfont.woff') format('woff'), url('JungleFever-webfont.ttf') format('truetype'), url('JungleFever-webfont.svg#webfontBlD2f3Gz') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    /* This has to be same as the text-shadows below */
+    background: #def;
+}
+
+h1 {
+    font-size: 150px;
+    line-height: 200px;
+    font-family: 'JungleFeverRegular', Helvetica, sans-serif;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, .2) 3px 3px 3px;
+    
+    /*text stroke*/
+    -webkit-text-stroke: 2px #fff473;
+}
+
+h2 {
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 4em;
+    line-height: 1em;
+}
+.inset-text {
+    /* Shadows are visible under slightly transparent text color */
+    color: rgba(10,60,150, 0.8);
+    text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
+}
+
+.inset-text3 {
+    /* Shadows are visible under slightly transparent text color */
+    //color: rgba(10,60,150, 0.8);
+    //text-shadow: 1px 4px 6px #def, 0 0 0 #000, 1px 4px 6px #def;
+    font-family: Times-New-Roman;
+    font-weight: normal;
+    font-size: 2em;
+    line-height: 1em;
+}
+
+.scrollBox {
+    height: 150px;
+    width: 95%;
+    border: 3px solid #ccc;
+    overflow: auto;
+    padding: 10px 
+}
+
+.button {
+  /*display: circle;*/
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+/* Don't show shadows when selecting text */
+::-moz-selection { background: #5af; color: #fff; text-shadow: none; }
+::selection { background: #5af; color: #fff; text-shadow: none; }
 </style>
-<h1>Treasure Hunt!</h1>
-
+<h1 class="inset-text">Treasure Hunt!</h1>
     </head>
-    <body>
-    <p>
-    <b>Instructions to Play!</b>
+    <body leftmargin="25px" rightmargin="25px">
+    <div class="scrollBox">
+    <h2>Instructions to Play!</h2>
 
-    <p>You must capture 100 points to release level badge.</p>
-    <p>Across the level you will find coins spread out for taking. Each coin fetches you 10 points.</p>
-    <p>Besides, you would also come across certain stars. Grabbing a star would either give you a chance to score 10 points or else cost you your game. Each star demands that you answer a simple question with a 'Yes' or 'No' to proceed further.</p>
-    <p></p>
-    <p>Controls --- Use spacebar to jump and your arrow keys to navigate</p>
-
-    <p>Note - Mobile users, please stay tuned for support!</p>
-
-    <p>Happy Gaming!</p>
-    <a href="game.html"><BUTTON>Let's Play</BUTTON></a>
+    <p class="inset-text3">1. There is a treasure out there. Collect coins and stars to win this hunt.<br><br>2.If you are eager to play, use 'SPACEBAR' to jump and 'Arrow keys' to navigate. Go Play!<br><br>3.If you want to know more, read on.<br><br>4.Collecting each coin fetches you 10 points.<br><br>5.You must score 100 points to qualify for completion of a level.<br><br>6.Once you score 100 points the level badge will be released.<br><br>7.Collect the level badge to move to the next level.<br><br>8.Across each level you will find certain special items also, each of which may have different effects.<br><br>9.Level#1 will have Stars spread out for you. Each star fetches a question that you must answer in Yes or No.<br><br>10.If you give the right answer, you get 10 points, else your game would be over.<br><br>11.Watch out for other items and their details in subsequent levels</p>
+    
+    <p class="inset-text3">Note - Mobile users, please stay tuned for support!<br><br>Happy Gaming!</p></div>
+    <div id="center-button">
+<a href="game.html"><button class="button"><span>Let's Play</span></button></a>
+</div>
+    <!-- <div id="center-button">
+    <a href="game.html"><button class="button" style="horizontal-align:middle"><span>Let's Play</span></button></a>
+    </div><br><br><br> -->
   </body>
-
 </html>

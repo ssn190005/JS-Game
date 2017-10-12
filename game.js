@@ -36,10 +36,10 @@ function addPlatforms() {
   platforms.create(100, 550, 'platform');
   platforms.create(300, 450, 'platform');
   platforms.create(250, 150, 'platform');
-  platforms.create(50, 300, 'platform');
+  platforms.create(35, 300, 'platform');
   platforms.create(150, 250, 'platform');
-  platforms.create(650, 300, 'platform');
-  platforms.create(550, 200, 'platform');
+  platforms.create(630, 300, 'platform');
+  platforms.create(560, 200, 'platform');
   platforms.create(300, 450, 'platform');
   platforms.create(400, 350, 'platform');
   platforms.create(100, 100, 'platform');
@@ -61,6 +61,7 @@ function createBadge() {
   badge.animations.play('spin', 10, true);
 }
 
+
 // when the player collects an item on the screen
 function itemHandler(player, item) {
   item.kill();
@@ -72,65 +73,62 @@ function itemHandler(player, item) {
   'Is Mount Everest the tallest peak of the world?',//4
   'Are there 50 states in the USA?',//5
   'Is Gandhinagar the capital of Gujarat?',//6
+  'Are kangaroos marsupial?',//6-7
+  'Do humans have 23 sets of chromosomes?',//6-8
   'Would Feb 2018 have 29 days?',//7
   'Do bats lay eggs?',//8
   'Does the abbrievation WWW stand for Window of World Web',//9
   'Is 27*13 greater than 14*26?',//10
   'Is New York City the Capital of USA?',//11
-  'Is Yen the currency of China?'//12
+  'Is Yen the currency of China?',//12
+  'Do Equators experience the highest peak temperatures of the year?',//12-14
+  'Does the Olympic ring symbol have 6 rings?'//12-16
   ];
   var index = Math.floor(Math.random()*questionBank.length);
   var res = 'Yes';
-  if(index == 0) {
-	res = 'Yes';
-  }
-  else if (index == 1){
-	res = 'Yes';	
-  }
-  else if (index == 2){
-	res = 'Yes';
-  }
-  else if (index == 3){
-	res = 'Yes';
-  }
-  else if (index == 4){
-  	res = 'Yes'
-  }
-  else if (index == 5){
-	res = 'Yes';
-  }
-  else if (index == 6){
-  	res = 'Yes'
+  if(index < 9) {
+    res = 'Yes';
   }
   else {
-	res = 'No';
+    res = 'No';
   }
 
   if (item.key == 'coin'){
     currentScore = currentScore + 10;
   }
+
   else if (item.key == 'poison'){
     currentScore = currentScore - 5;
   }
   else if(item.key == 'star'){
-  	alert("You have hit the star. You must be put to test now. Answer correctly to move ahead");
-  	var x = window.prompt(questionBank[index]);
-	if (x.toLowerCase() == res.toLowerCase()){
-   	  window.alert("Good. That is the right answer. You get +10");
-	  currentScore = currentScore + 10;
-	}
-	else {
-   	  window.alert("Wrong answer. Game up!");
-   	  lose = true;
-   	  player.kill();
-   	  
-   	  losingMessage.text = "   You Lose!!!" + "\n" + "You scored" + " " + currentScore;
-   	  					
-   	  setTimeout(function(){
-		window.location.href = "thanks.html";
-		},2000);
-	}
-  }
+    swal({
+       title: questionBank[index],
+       input: 'text',
+       inputPlaceholder: 'Type Yes or No'
+      }).then(function(result){
+        if(result.toLowerCase() == res.toLowerCase()){
+          currentScore = currentScore + 10;
+          swal(
+            'Correct Answer! You get 10 points.',
+             'success'
+          );  
+          if (currentScore == winningScore) {
+                createBadge();
+          }
+        }
+        else{
+          swal(
+            'Incorrect Answer! You Lose',
+            'failure'
+          );
+        lose = true;
+        player.kill();
+        setTimeout(function(){
+        window.location.href = "thanks.html";
+        },2000);
+        }
+    })
+}
   else {
   	//
   }
@@ -148,7 +146,7 @@ function badgeHandler(player, badge) {
 
 // setup game when the web page loads
 window.onload = function () {
-  game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
+  game = new Phaser.Game(800,600, Phaser.AUTO, '', { preload: preload, create: create, update: update, render: render });
   
   // before the game begins
   function preload() {
@@ -221,12 +219,17 @@ window.onload = function () {
     if (jumpButton.isDown && (player.body.onFloor() || player.body.touching.down)) {
       player.body.velocity.y = -400;
     }
-    // when the player winw the game
+    // when the player wins the game
     if (won) {
-      winningMessage.text = "YOU WIN!!!";
+      //winningMessage.text = "YOU WIN!!!";
+      swal(
+        'Congratulations!!!',
+        'You have won this level.',
+        'success'
+        );
       setTimeout(function(){
-		window.location.href = "level2.html";
-		},5000);
+        window.location.href = "level2.html";
+      },3000);
     }
 
   }
@@ -236,10 +239,3 @@ window.onload = function () {
   }
 
 };
-
-
-
-
-
-
-
