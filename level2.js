@@ -153,7 +153,15 @@ function itemHandler(player, item) {
 // when the player collects the badge at the end of the game
 function badgeHandler(player, badge) {
   badge.kill();
-  won = true;
+  swal(
+        'Congratulations!!!',
+        'You have won this level.',
+        'success'
+        );
+      setTimeout(function(){
+        window.location.href = "thanks.html";
+      },3000);
+  //won = true;
 }
 
 // setup game when the web page loads
